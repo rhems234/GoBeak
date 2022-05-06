@@ -10,7 +10,6 @@ func main() {
 	var n int
 	var i = 2
 	reader := bufio.NewReader(os.Stdin)
-	writer := bufio.NewWriter(os.Stdout)
 
 	fmt.Fscanln(reader, &n)
 
@@ -21,7 +20,7 @@ func main() {
 
 		if n%i == 0 {
 			n /= i
-			fmt.Fprintln(writer, i)
+			fmt.Println(i)
 		} else {
 			i++
 		}
