@@ -22,10 +22,12 @@ func GCD(a, b int) (gcd int) { // 최대공약수
 }
 
 func main() {
-	var a, b int
+	var a, b, input int
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanln(reader, &a, &b)
+	fmt.Fscanln(reader, &input)
+	for i := 0; i < input; i++ {
+		fmt.Fscanln(reader, &a, &b)
 
-	fmt.Println(GCD(a, b))
-	fmt.Println(LCM(a, b))
+		fmt.Println(LCM(a, b))
+	}
 }
