@@ -8,31 +8,30 @@ import (
 )
 
 func main() {
-	var a int
+	var c int
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
-	fmt.Fscanln(reader, &a)
+	fmt.Fscanln(reader, &c)
 	defer writer.Flush()
 
-	for i := 0; i < a; i++ {
-		var num int
-		fmt.Fscanf(reader, "%d", &num)
+	for i := 0; i < c; i++ {
+		var n int
+		fmt.Fscanf(reader, "%d ", &n)
 
-		var score = make([]float64, num)
+		var scores = make([]float64, n)
 		var sum, avg float64
-		for j := 0; j < num; j++ {
-			fmt.Fscanf(reader, "%f", &score[j])
-			sum = sum + score[j]
+		for j := 0; j < n; j++ {
+			fmt.Fscanf(reader, "%f ", &scores[j])
+			sum += scores[j]
 		}
-		avg = sum / float64(num)
+		avg = sum / float64(n)
 
-		var p float64
-		for _, val := range score {
+		var proportion float64
+		for _, val := range scores {
 			if val > avg {
-				p += (1 / float64(num))
+				proportion += (1 / float64(n))
 			}
 		}
-		fmt.Fprintf(writer, "%.3f%s\n", math.Round(p*100000)/1000, "%")
+		fmt.Fprintf(writer, "%.3f%s\n", math.Round(proportion*100000)/1000, "%")
 	}
-
 }
