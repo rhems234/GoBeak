@@ -14,7 +14,7 @@ func main() {
 
 	var mat = make([]string, n)
 	for i := 0; i < n; i++ {
-		fmt.Fscanf(reader, "%v\n", mat[i])
+		fmt.Fscanf(reader, "%v\n", &mat[i])
 	}
 	var min = n * m
 	for i := 0; i < n-7; i++ {
