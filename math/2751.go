@@ -1,13 +1,19 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"sort"
 )
 
 func main() {
 	var n int
-	fmt.Scanln(&n)
+	reader := bufio.NewReader(os.Stdin)
+	writer := bufio.NewWriter(os.Stdout)
+	defer writer.Flush()
+
+	fmt.Fscanln(reader, &n)
 	number := make([]int, 0, n)
 
 	for i := 0; i < n; i++ {
@@ -19,6 +25,6 @@ func main() {
 	sort.Ints(number)
 
 	for _, i := range number {
-		fmt.Println(i)
+		fmt.Fprintln(writer, i)
 	}
 }
