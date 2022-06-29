@@ -7,22 +7,37 @@ import (
 )
 
 func main() {
-	var e, s, m int
+	var e = 1
+	var s = 1
+	var m = 1
+	var E, S, M int
+	var year = 1
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
 	defer writer.Flush()
 
-	fmt.Fscan(reader, &e, &s, &m)
+	fmt.Fscan(reader, &E)
+	fmt.Fscan(reader, &S)
+	fmt.Fscan(reader, &M)
 
-	e %= 15
-	s %= 28
-	m %= 19
+	for true {
+		if e == E && s == S && m == M {
+			fmt.Fprintln(writer, year)
+			break
+		}
+		year++
 
-	var result int
-	for i := 1; i > 0; i++ {
-		if i%15 == e && i%28 == s && i%19 == m {
-			result += i
+		e += 1
+		s += 1
+		m += 1
+		if e == 16 {
+			e = 1
+		}
+		if s == 29 {
+			s = 1
+		}
+		if m == 20 {
+			m = 1
 		}
 	}
-	fmt.Print(result)
 }
